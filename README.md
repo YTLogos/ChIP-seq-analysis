@@ -34,7 +34,8 @@ I developed a Snakemake based ChIP-seq pipeline: [pyflow-ChIPseq](https://github
 11. [Systematic comparison of monoclonal versus polyclonal antibodies for mapping histone modifications by ChIP-seq](http://biorxiv.org/content/early/2016/05/19/054387) The binding patterns for H3K27ac differed substantially between polyclonal and monoclonal antibodies. However, this was most likely due to the distinct immunogen used rather than the clonality of the antibody. Altogether, we found that monoclonal antibodies as a class perform as well as polyclonal antibodies. Accordingly, we recommend the use of monoclonal antibodies in ChIP-seq experiments.
 12. A nice small review: [Unraveling the 3D genome: genomics tools for multiscale exploration](http://www.cell.com/trends/genetics/pdf/S0168-9525(15)00063-3.pdf)
 13. Three very interesting papers, [Developmental biology: Panoramic views of the early epigenome](http://www.nature.com/nature/journal/v537/n7621/full/nature19468.html)
-
+14. [ChIP off the old block: Beyond chromatin immunoprecipitation](https://www.sciencemag.org/features/2018/12/chip-old-block-beyond-chromatin-immunoprecipitation). A nice review of the past and future of ChIPseq.
+15. [Histone Modifications: Insights into Their Influence on Gene Expression](https://www.sciencedirect.com/science/article/pii/S0092867418310481)
     **Protocols**  
 1. [A computational pipeline for comparative ChIP-seq analyses](http://www.ncbi.nlm.nih.gov/pubmed/22179591)    
 2. [Identifying ChIP-seq enrichment using MACS](http://www.nature.com/nprot/journal/v7/n9/full/nprot.2012.101.html)  
@@ -60,6 +61,7 @@ The IgG control is also fine, but because so little DNA is there, you might get 
 
 **For cancer cells, an input control can be used to correct for copy-number bias.**
 
+* [tools used by IHEC consortium](http://ihec-epigenomes.org/research/tools/)
 
 [A quote from Tao Liu:](https://groups.google.com/forum/#!searchin/macs-announcement/h3k27ac/macs-announcement/9_LB5EsjS_Y/nwgsPN8lR-kJ) who develped MACS1/2
 
@@ -78,9 +80,13 @@ The IgG control is also fine, but because so little DNA is there, you might get 
 9. [Detecting broad domains and narrow peaks in ChIP-seq data with hiddenDomains](http://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0991-z) [tool](http://hiddendomains.sourceforge.net/)
 10. [BroadPeak: a novel algorithm for identifying broad peaks in diffuse ChIP-seq datasets](http://bioinformatics.oxfordjournals.org/content/29/4/492)
 11. [epic: diffuse domain ChIP-Seq caller based on SICER]( https://github.com/endrebak/epic). It is a re-writen of SICER for faster processing using more CPUs. (Will try it for broad peak for sure).
+    [epic2](https://github.com/biocore-ntnu/epic2) paper is out https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btz232/5421513?redirectedFrom=fulltext
 12. [Cistrome](http://cistrome.org/Cistrome/Cistrome_Project.html): The best place for wet lab scientist to check the binding sites. Developed by Shierly Liu lab in Harvard.
-13. [Accounting for GC-content bias reduces systematic errors and batch effects in ChIP-Seq peak callers](http://biorxiv.org/content/early/2016/12/01/090704) tool in [github](https://github.com/tengmx/gcapc)
-14. [SUPERmerge]((https://github.com/Bohdan-Khomtchouk/SUPERmerge):ChIP-seq coverage island analysis algorithm for broad histone marks
+13. [ChIP-Atlas](http://chip-atlas.org/) is an integrative and comprehensive database for visualizing and making use of public ChIP-seq data. ChIP-Atlas covers almost all public ChIP-seq data submitted to the SRA (Sequence Read Archives) in NCBI, DDBJ, or ENA, and is based on over 78,000 experiments.
+14. [A map of direct TF-DNA interactions in the human genome](https://unibind.uio.no/) UniBind is a comprehensive map of direct interactions between transcription factor (TFs) and DNA. High confidence TF binding site predictions were obtained from uniform processing of thousands of ChIP-seq data sets using the ChIP-eat software.
+15. [Accounting for GC-content bias reduces systematic errors and batch effects in ChIP-Seq peak callers](http://biorxiv.org/content/early/2016/12/01/090704) tool in [github](https://github.com/tengmx/gcapc)
+16. [SUPERmerge](https://github.com/Bohdan-Khomtchouk/SUPERmerge):ChIP-seq coverage island analysis algorithm for broad histone marks
+17. [PeakRanger](http://ranger.sourceforge.net/manual1.18.html) heard that it is good for broad peaks of H3K9me3 and H3K27me3.
 
 
 **Different parameters using the same program can produce drastic different sets of peaks especially for histone modifications with variable enrichment length and gaps between peaks. One needs to make a valid argument for parameters he uses**  
@@ -88,6 +94,9 @@ The IgG control is also fine, but because so little DNA is there, you might get 
 An example of different parameters for homer `findPeaks`:  
 ![](./images/variablePeaks.png)
 
+### Tutorial
+
+* [tutorial by Simon van Heeringen at bioinfosummer](https://github.com/simonvh/bioinfosummer)
 
 ### Binding does not infer functionality  
 
@@ -124,6 +133,9 @@ An example of different parameters for homer `findPeaks`:
 10. [clusterProfiler](http://bioconductor.org/packages/release/bioc/vignettes/clusterProfiler/inst/doc/clusterProfiler.html) by Guangchuan Yu, the author of `ChIPseeker`.
 11. [fgsea bioconductor package](http://bioconductor.org/packages/devel/bioc/html/fgsea.html) Fast Gene Set Entrichment Analysis.
 12. [paper: A Comparison of Gene Set Analysis Methods in Terms of Sensitivity, Prioritization and Specificity](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0079217#pone-0079217-t001)
+13. [UniBind Enrichment Analysis](https://unibind.uio.no/enrichment/) predicts which sets of TFBSs from the UniBind database are enriched in a set of given genomic regions. Enrichment computations are performed using the LOLA tool.
+14. [BEHST](https://www.biorxiv.org/content/10.1101/168427v1) from Hoffman group: genomic set enrichment analysis enhanced through integration of chromatin long-range interactions
+15. [ChEA3: transcription factor enrichment analysis by orthogonal omics integration](https://amp.pharm.mssm.edu/chea3)
 
 
 ### Chromatin state Segmentation  
@@ -152,9 +164,7 @@ An example of different parameters for homer `findPeaks`:
  
  >Most of the software for ChIP annotation doesn't considered this issue when annotating peak (0-based) to transcript (1-based). To my knowledge, only HOMER consider this issue. After I figure this out, I have updated ChIPseeker (version >= 1.4.3) to fix the issue.
  
-3. Bioconductor package [ChIPpeakAnno](http://bioconductor.org/packages/release/bioc/html/ChIPpeakAnno.html). There is a bug with this package, not sure if it is solved or not. Still a post from Guangchuan Yu: [Bug of R package ChIPpeakAnno](http://ygc.name/2014/01/14/bug-of-r-package-chippeakanno/). 
-
- >I used R package ChIPpeakAnno for annotating peaks, and found that it handle  the DNA strand in the wrong way. Maybe the developers were from the computer science but not biology background.
+3. Bioconductor package [ChIPpeakAnno](http://bioconductor.org/packages/release/bioc/html/ChIPpeakAnno.html). 
 
 4. [annotatr](https://github.com/rcavalcante/annotatr/) Annotation of Genomic Regions to Genomic Annotations.
 
@@ -167,6 +177,9 @@ Look at a [post](http://andre-rendeiro.me/2015/04/03/chipseq_diffbind_analysis/)
 A review paper [A comprehensive comparison of tools for differential ChIP-seq analysis](http://bib.oxfordjournals.org/content/early/2016/01/12/bib.bbv110.short?rss=1)  
 
 ![](./images/choose_diff_tool.png)
+
+
+* [ATAC-seq normalization method can significantly affect differential accessibility analysis and interpretation](https://epigeneticsandchromatin.biomedcentral.com/articles/10.1186/s13072-020-00342-y)
 
 1. [MultiGPS](http://mahonylab.org/software/multigps/)  
 
@@ -230,6 +243,7 @@ I just found [PARE](http://spundhir.github.io/PARE/). PARE is a computational me
 21. [Romulus: Robust multi-state identification of transcription factor binding sites from DNase-seq data](https://github.com/ajank/Romulus): Romulus is a computational method to accurately identify individual transcription factor binding sites from genome sequence information and cell-type--specific experimental data, such as DNase-seq. It combines the strengths of its predecessors, CENTIPEDE and Wellington, while keeping the number of free parameters in the model robustly low. The method is unique in allowing for multiple binding states for a single transcription factor, differing in their cut profile and overall number of DNase I cuts.
 22. [moca](https://github.com/saketkc/moca): Tool for motif conservation analysis.
 23. [gimmemotifs](https://github.com/simonvh/gimmemotifs) Suite of motif tools, including a motif prediction pipeline for ChIP-seq experiments. looks very useful, will take a look!
+24. [YAMDA](https://github.com/daquang/YAMDA): thousandfold speedup of EM-based motif discovery using deep learning libraries and GPU
 
 ### Super-enhancer identification   
 
@@ -259,12 +273,17 @@ Example of a super enhancer plot:
 
 **[imPROSE](https://github.com/asntech/improse) - Integrated Methods for Prediction of Super-Enhancers
 
+**[CREAM](https://github.com/bhklab/CREAM) (Clustering of Functional Regions Analysis Method) is a new method for identification of clusters of functional regions (COREs) within chromosomes.** published in Genome Research by Mathieu Lupien group. paper: Identifying clusters of cis-regulatory elements underpinning TAD structures and lineage-specific regulatory networks.
+
+
 ### Bedgraph, bigwig manipulation tools
 [WiggleTools](https://github.com/Ensembl/WiggleTools)  
 [bigwig tool](https://github.com/CRG-Barcelona/bwtool/wiki)  
 [bigwig-python](https://github.com/brentp/bw-python)  
 [samtools](http://www.htslib.org/)    
-[bedtools](http://bedtools.readthedocs.org/en/latest/) my all-time favorite tool from Araon Quinlan' lab. Great documentation!   
+[bedtools](http://bedtools.readthedocs.org/en/latest/) my all-time favorite tool from Araon Quinlan' lab. Great documentation! 
+[pyBedGraph](https://www.biorxiv.org/content/10.1101/709683v1): a Python package for fast operations on 1-dimensional genomic signal tracks.
+[pyBigwig](https://github.com/deeptools/pyBigWig)
 [Hosting bigWig for UCSC visualization](http://crazyhottommy.blogspot.com/2014/02/hosting-bigwig-by-dropbox-for-ucsc.html)  
 [My first play with GRO-seq data, from sam to bedgraph for visualization](http://crazyhottommy.blogspot.com/2013/10/my-first-play-with-gro-seq-data-from.html)  
 [convert bam file to bigwig file and visualize in UCSC genome browser in a Box (GBiB)](http://crazyhottommy.blogspot.com/2014/10/convert-bam-file-to-bigwig-file-and.html)  
@@ -328,6 +347,8 @@ A paper from Genome Research [Ubiquitous heterogeneity and asymmetry of the chro
 * [Genome-wide identification and characterization of HOT regions in the human genome](http://biorxiv.org/content/early/2016/01/07/036152.abstract)  
 * [EnhancerAtlas: a resource for enhancer annotation and analysis in 105 human cell/tissue types](http://www.enhanceratlas.org/)
 * [review: Computational Tools for Stem Cell Biology](http://www.sciencedirect.com/science/article/pii/S0167779916300567)
+* [Integrative analysis of 10,000 epigenomic maps across 800 samples for regulatory genomics and disease dissection](https://www.biorxiv.org/content/10.1101/810291v2) from Manolis Kellis group.
+* [Index and biological spectrum of accessible DNA elements in the human genome](https://www.biorxiv.org/content/10.1101/822510v1) DHS sites from John A Stamatoyannopoulos group.
 
 ### Interesting Enhancer papers
 * [Multiplex enhancer-reporter assays uncover unsophisticated TP53 enhancer logic](http://genome.cshlp.org/content/26/7/882)
@@ -342,6 +363,9 @@ A paper from Genome Research [Ubiquitous heterogeneity and asymmetry of the chro
 * [Model-based Analysis of Regulation of Gene Expression: MARGE](http://cistrome.org/MARGE/) from Shirley Liu's lab. MARGE is a robust methodology that leverages a comprehensive library of genome-wide H3K27ac ChIP-seq profiles to predict key regulated genes and cis-regulatory regions in human or mouse. 
 * [PrESSto: Promoter Enhancer Slider Selector Tool](http://pressto.binf.ku.dk/)
 * [TargetFinder](https://github.com/shwhalen/targetfinder). paper: [Enhancer–promoter interactions are encoded by complex genomic signatures on looping chromatin](http://www.nature.com/ng/journal/v48/n5/full/ng.3539.html)
+* [C3D](https://github.com/mlupien/C3D) Cross Cell-type Correlation in DNaseI hypersensitivity. calculates correlations between open regions of chromatin based on DNase I hypersensitivity signals. Regions with high correlations are candidates for 3D interactions. It also performs association tests on each candidate and adjusts p-values. 
+* [ABC](https://www.biorxiv.org/content/10.1101/529990v1) Activity-by-Contact model of enhancer specificity from thousands of CRISPR perturbations. Blog post https://jesseengreitz.wordpress.com/2019/02/10/preprint-activity-by-contact-model/
+* [A curated benchmark of enhancer-gene interactions for evaluating enhancer-target gene prediction methods](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1924-8) "We use BENGI to test several published computational methods for linking enhancers with genes, including signal correlation and the TargetFinder and PEP supervised learning methods. We find that while TargetFinder is the best-performing method, it is only modestly better than a baseline distance method for most benchmark datasets when trained and tested with the same cell type and that TargetFinder often does not outperform the distance method when applied across cell types."
 
 
 ### Allele-specific analysis  
@@ -383,27 +407,72 @@ A paper from Genome Research [Ubiquitous heterogeneity and asymmetry of the chro
 
 [3CPET](http://www.bioconductor.org/packages/release/bioc/html/R3CPET.html): Finding Co-factor Complexes in Chia-PET experiment using a Hierarchical Dirichlet Process
 
+## New single/few cell epigenomics
+
+* [GeF-seq: A Simple Procedure for Base Pair Resolution ChIP-seq](https://www.ncbi.nlm.nih.gov/m/pubmed/30109604/)
+
+* [Ultra-low input CUT&RUN (uliCUT&RUN) enables interrogation of TF binding from low cell numbers](https://www.biorxiv.org/content/early/2018/03/21/286351)
+
+* [We describe Cleavage Under Targets and Release Using Nuclease (CUT&RUN), a chromatin profiling strategy in which antibody-targeted controlled cleavage by micrococcal nuclease releases specific protein-DNA complexes into the supernatant for paired-end DNA sequencing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5310842/) another cut&run method. maybe useful for scChIP-seq?
+
+* [Single-cell ChIP-seq reveals cell subpopulations defined by chromatin state](https://www.nature.com/articles/nbt.3383)
+
+* [Calling Cards enable multiplexed identification of the genomic targets of DNA-binding proteins](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3083092/) this is potentially can work with single cells.
+
+* [Ultra-parallel ChIP-seq by barcoding of intact nuclei](https://www.biorxiv.org/content/early/2018/03/05/276469) as low as 1000 cells.
+
+* [single-cell chromatin overall omic-scale landscape sequencing (scCOOL-seq) to generate a genome-wide map of DNA methylation and chromatin accessibility at single-cell resolution](https://www.nature.com/articles/s41556-018-0123-2)
+
+* [High-Throughput ChIPmentation: freely scalable, single day ChIPseq data generation from very low cell-numbers](https://www.biorxiv.org/content/early/2018/09/27/426957)
+
+* [CUT&Tag for efficient epigenomic profiling of small samples and single cells](https://www.biorxiv.org/content/10.1101/568915v1)
+
+* [Simultaneous quantification of protein-DNA contacts and transcriptomes in single cells](https://www.biorxiv.org/content/10.1101/529388v1) scDamID&T.
+
+* [Self-reporting transposons enable simultaneous readout of gene expression and transcription factor binding in single cells](https://www.biorxiv.org/content/10.1101/538553v2) piggyBac transposase.
+
+* [Mapping Histone Modifications in Low Cell Number and Single Cells Using Antibody-guided Chromatin Tagmentation (ACT-seq)](https://www.biorxiv.org/content/10.1101/571208v2) by Keji Zhao group.
+
+* [Single-cell chromatin immunocleavage sequencing (scChIC-seq) to profile histone modification](https://www.nature.com/articles/s41592-019-0361-7) by Keji Zhao group.
+
+* [CoBATCH for high-throughput single-cell epigenomic profiling](https://www.biorxiv.org/content/10.1101/590661v1) Protein A in fusion to Tn5 transposase is enriched through specific antibodies to genomic regions and Tn5 generates indexed chromatin fragments ready for the library preparation and sequencing.
+
+* [High-throughput single-cell ChIP-seq identifies heterogeneity of chromatin states in breast cancer](https://www.nature.com/articles/s41588-019-0424-9)
+
+### ChIP-exo
+
+* [Characterizing protein-DNA binding event subtypes in ChIP-exo data](https://www.biorxiv.org/content/early/2018/02/16/266536)
+* [paper: Simplified ChIP-exo assays](https://www.nature.com/articles/s41467-018-05265-7)
 
 ### ATAC-seq
 
 >Some may notice that the peaks produced look both like peaks produced from the TF ChIP-seq pipeline as well as the histone ChIP-seq pipeline. This is intentional, as ATAC-seq data looks both like TF data (narrow peaks of signal) as well as histone data (broader regions of openness).
 
+* paper [From reads to insight: a hitchhiker’s guide to ATAC-seq data analysis](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-1929-3)
 * [ATACseqQC ](http://bioconductor.org/packages/release/bioc/html/ATACseqQC.html) a bioconductor package for quality control of ATAC-seq data.
 * [RASQUAL](https://github.com/dg13/rasqual) (Robust Allele Specific QUAntification and quality controL) maps QTLs for sequenced based cellular traits by combining population and allele-specific signals. [paper: Fine-mapping cellular QTLs with RASQUAL and ATAC-seq](http://www.nature.com/ng/journal/vaop/ncurrent/full/ng.3467.html) 
 * [ATAC-seq Forum](https://sites.google.com/site/atacseqpublic/home?pli=1)  
-* [Single-cell ATAC-Seq](http://cole-trapnell-lab.github.io/projects/sc-atac/)  
+* [Single-cell ATAC-Seq](http://cole-trapnell-lab.github.io/projects/sc-atac/) 
+* [A rapid and robust method for single cell chromatin accessibility profiling](https://www.biorxiv.org/content/early/2018/04/27/309831)
 * [Global Prediction of Chromatin Accessibility Using RNA-seq from Small Number of Cells](http://www.biorxiv.org/content/early/2016/01/01/035816)  from RNA-seq to DNA accessibility. [tool on github](https://github.com/WeiqiangZhou/BIRD)  
 * [NucleoATAC](https://github.com/GreenleafLab/NucleoATAC):Python package for calling nucleosomes using ATAC-Seq data 
 * [chromVAR: Inferring transcription factor variation from single-cell epigenomic data](http://biorxiv.org/content/early/2017/02/21/110346) scATAC-seq
 * [ENCODE ATAC-seq guidelines](https://www.encodeproject.org/data-standards/atac-seq/)
-
+* [Brockman](https://carldeboer.github.io/brockman.html) is a suite of command line tools and R functions to convert genomics data into DNA k-mer words representing the regions associated with a chromatin mark, and then analyzing these k-mer sets to see how samples differ from each other. This approach is primarily intended for single cell genomics data, and was tested most extensively on single cell ATAC-seq data
+* [Reproducible inference of transcription factor footprints in ATAC-seq and DNase-seq datasets via protocol-specific bias modeling](https://www.biorxiv.org/content/early/2018/03/19/284364)
+* [msCentipede](http://rajanil.github.io/msCentipede/) is an algorithm for accurately inferring transcription factor binding sites using chromatin accessibility data (Dnase-seq, ATAC-seq) and is written in Python2.x and Cython.
+* The Differential ATAC-seq Toolkit [(DAStk)](https://biof-git.colorado.edu/dowelllab/DAStk) is a set of scripts to aid analyzing differential ATAC-Seq data.
+* [Identification of Transcription Factor Binding Sites using ATAC-seq](https://www.biorxiv.org/content/early/2018/07/17/362863)  We propose HINT-ATAC, a footprinting method that addresses ATAC- seq specific protocol artifacts
+* [HMMRATAC](https://github.com/LiuLabUB/HMMRATAC)splits a single ATAC-seq dataset into nucleosome-free and nucleosome-enriched signals, learns the unique chromatin structure around accessible regions, and then predicts accessible regions across the entire genome. We show that HMMRATAC outperforms the popular peak-calling algorithms on published human and mouse ATAC-seq datasets.
 
 ### DNase-seq
 * [pyDNase](https://github.com/jpiper/pyDNase) - a library for analyzing DNase-seq data. [paper: Wellington-bootstrap: differential DNase-seq footprinting identifies cell-type determining transcription factors](http://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-015-2081-4)  
 * [paper: Analysis of computational footprinting methods for DNase sequencing experiments](http://www.nature.com/nmeth/journal/vaop/ncurrent/full/nmeth.3772.html) [tool](http://www.regulatory-genomics.org/hint/introduction/) 
+* [paper: A practical guide for DNase-seq data analysis: from data management to common applications](https://academic.oup.com/bib/advance-article/doi/10.1093/bib/bby057/5053117)
 * Two nature prime: [Genome-wide footprinting: ready for prime time?](http://www.nature.com/nmeth/journal/v13/n3/full/nmeth.3766.html) [Genomic footprinting](http://www.nature.com/nmeth/journal/v13/n3/full/nmeth.3768.html)
 * [PING](http://bioconductor.org/packages/release/bioc/html/PING.html) biocondcutor package: Probabilistic inference for Nucleosome Positioning with MNase-based or Sonicated Short-read Data
 * [Basset](https://github.com/davek44/Basset) Convolutional neural network analysis for predicting DNA sequence activity]
+* [Analysis of optimized DNase-seq reveals intrinsic bias in transcription factor footprint identification](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4018771/)
 
 ### Chromatin Interaction data (ChIA-PET, Hi-C)
 * [ChIA-PET2](https://github.com/GuipengLi/ChIA-PET2) a versatile and flexible pipeline for analysing different variants of ChIA-PET data
@@ -423,3 +492,47 @@ A paper from Genome Research [Ubiquitous heterogeneity and asymmetry of the chro
 * [MAPPING OF LONG-RANGE CHROMATIN INTERACTIONS BY PROXIMITY LIGATION ASSISTED CHIP-SEQ](http://biorxiv.org/content/early/2016/09/09/074294)
 * [HiChIP: Efficient and sensitive analysis of protein-directed genome architecture](http://biorxiv.org/content/early/2016/09/08/073619) HiChIP improves the yield of conformation-informative reads by over 10-fold and lowers input requirement over 100-fold relative to ChIA-PE
 * [A Compendium of Chromatin Contact Maps Reveals Spatially Active Regions in the Human Genome](http://www.cell.com/cell-reports/fulltext/S2211-1247(16)31481-4?elsca1=etoc&amp;elsca2=email&amp;elsca3=2211-1247_20161115_17_8_&amp;elsca4=Cell%20Press%7CWebinar) paper from Bing Ren's group. 21 tissue-specific TADs.
+
+### Caleb's take on HiChIP analysis
+From Caleb, the author of hichipper https://twitter.com/CalebLareau/status/1098312702651523077 thx!
+
+In HiChIP data analyses, there are two primary problems that we are trying to solve. A) Which anchors (i.e. genomic loci) should be used as a feature set and B) which loops (i.e. interactions between pairs of loci) are important in the data. 2/n
+
+Depending on what you are hoping to use your data for, there are a variety of ways to think about anchors and loops. Two uses of HiChIP that come to mind are "which gene is this enhancer talking to" and "which loops are differential between my celltype/condition of interest" 3/n
+
+When Martin and I wrote hichipper, we envisioned the second question being more used (i.e. building out a framework for differential loop calling), so we wanted a pre-processing pipeline that was as inclusive of potential loops as possible that could be subsetted downstream 4/n
+
+To these ends, we reported an improved version of anchor detection from HiChIP data by modeling the restriction enzyme cut bias explicitly, which helped identify high-quality anchors from the data itself 5/n
+
+(we achieve this by re-parametrizing MACS2 peak calling by essentially fitting a loess curve to the data in the previous picture) 6/n
+
+Unfortunately, based on user feedback, this modified background winds up with a very, very conservative peak calling if the library preparations are sub-par. Thus, the safest way to approach HiChIP data analyses is often to use a pre-defined anchor set 7/n
+
+These can be from either a complementary ATAC-seq or ChIP-seq dataset for the conditions that you are interested in. From what I've seen, you can supply a bed file to hichipper or other tools directly. Hichipper does some other modifications by default to this bed file FYI 8/n
+
+In terms of the second problem of identifying loops, hichipper didn't make any revolutionary progress. We recommend some level of CPM-based filtering + mango FDR calculation (implemented in hichipper) for identifying single-library significant loops. 9/n
+
+Where I've personally done the most is getting multiple libraries from multiple conditions and using some sort of between-replicate logic to filter to a reasonable (~10,000-20,000) number of loops ( see e.g. https://github.com/caleblareau/k562-hichip …) 10/n
+
+
+Other tools (that I admittedly have not tried) use a variety of statistical techniques to (probably more intelligently from what I can tell) merge anchors or filter loops for analyses. A brief run down of those that I'm aware of (not exhaustive)-- 11/n
+
+MAPS (https://www.biorxiv.org/content/biorxiv/early/2018/09/08/411835.full.pdf …) uses a measure of reproducibility with ChIP-seq to define a normalization and significance basis for loop calling. Given HiChIP-specific restriction enzyme bias, this seems sensible 12/n
+
+FitHiChIP (https://www.biorxiv.org/content/early/2018/10/29/376194.full.pdf …) provides automatic merging of nearby anchors to solve the "hairball" problem, which is clearly shown Fig. 1. When I compared hichipper to FitHiC, the bias regression seemed to perform well, but I ran into memory issues which high... 13/n
+
+resolution (i.e. ~2.5kb) HiChIP data, which the authors have apparently solved in FitHiChIP. 14/n
+
+Additionally, there is CID, which uses a density-based method to further collapse anchors to solve the "hairball" problem. 15/n
+
+There are certainly other tools out there, but from my experience, any of these four (hichipper, MAPS, FitHiChIP, and CID) will probably give you something sensible (again acknowledging that I myself haven't actually run these other 3 tools) 16/n
+
+And if you're still reading this, I'll be a bit more specific about how I view hichipper pros/cons from both my own use and others in the community: hichipper provides the most "vanilla" functionality to given sensible yet exhaustive anchors and loops. 17/n
+
+I prefer it this way because I find that for each data set, I have to apply variable downstream threshold and cutoffs because the assay is so variable depending on which experimentalist performs the protocol and the biological question often varies so much 18/n
+
+This may be a negative for individuals new to bioinformatics or HiChIP data but seemingly a positive for someone more experienced in working with related data. It's not obvious to me which other tools may be more applicable to a novice 19/n
+
+Hope this helps paint a picture-- do let me know what you find if you compare tools! I think that it would be useful for the community.  20/20
+
+
