@@ -1,8 +1,9 @@
 # ChIP-seq-analysis
 
-### A pipeline
+### Snakemake pipelines
 
 I developed a Snakemake based ChIP-seq pipeline: [pyflow-ChIPseq](https://github.com/crazyhottommy/pyflow-ChIPseq).
+and ATACseq pipeline: [pyflow-ATACseq](https://github.com/crazyhottommy/pyflow-ATACseq)
 
 ### Resources for ChIP-seq 
 1. [ENCODE: Encyclopedia of DNA Elements](https://www.encodeproject.org/)  [ENCODExplorer](https://www.bioconductor.org/packages/release/bioc/html/ENCODExplorer.html): A compilation of metadata from ENCODE. A bioc package to access the meta data of ENCODE and download the raw files.
@@ -69,7 +70,7 @@ The IgG control is also fine, but because so little DNA is there, you might get 
 
 1. The most popular peak caller by Tao Liu: [MACS2](https://github.com/taoliu/MACS/). Now `--broad` flag supports broad peaks calling as well.
 
-2. [TF ChIP-seq peak calling using the Irreproducibility Discovery Rate (IDR) framework](https://sites.google.com/site/anshulkundaje/projects/idr) and many [Software Tools Used to Create the ENCODE Resource](https://genome.ucsc.edu/ENCODE/encodeTools.html)    
+2. [TF ChIP-seq peak calling using the Irreproducibility Discovery Rate (IDR) framework](https://github.com/nboley/idr) and many [Software Tools Used to Create the ENCODE Resource](https://genome.ucsc.edu/ENCODE/encodeTools.html)    
 3. [SICER](http://home.gwu.edu/~wpeng/Software.htm) for broad histone modification ChIP-seq
 4. [HOMER](http://homer.salk.edu/homer/ngs/peaks.html) can also used to call Transcription factor ChIP-seq peaks and histone 
     modification ChIP-seq peaks.
@@ -155,7 +156,11 @@ An example of different parameters for homer `findPeaks`:
 * [Coda](https://github.com/kundajelab/coda) uses convolutional neural networks to learn a mapping from noisy to high-quality ChIP-seq data. These trained networks can then be used to remove noise and improve the quality of new ChIP-seq data. From Ashul lab.
 * [DeepChrome](https://github.com/QData/DeepChrome) is a unified CNN framework that automatically learns combinatorial interactions among histone modification marks to predict the gene expression. (Is it really better than a simple linear model?)
 * [deep learning in biology](https://github.com/hussius/deeplearning-biology)
-
+* gReLU is a Python library to train, interpret, and apply deep learning models to DNA sequences. [Code documentation is available here.](https://github.com/Genentech/gReLU)
+* [tangerMEME](https://github.com/jmschrei/tangermeme) is an extension of the MEME suite concept to biological sequence analysis when you have a collection of sequences and a predictive model.
+* [Dissecting the cis-regulatory syntax of transcription initiation with deep learning](https://www.biorxiv.org/content/10.1101/2024.05.28.596138v1)
+* Transfer learning reveals sequence determinants of the quantitative response to transcription factor dosage https://www.biorxiv.org/content/10.1101/2024.05.28.596078v1
+  
 ### Peak annotation 
 
 1. Homer [`annotatePeak`](http://homer.salk.edu/homer/ngs/annotation.html) 
@@ -180,6 +185,7 @@ A review paper [A comprehensive comparison of tools for differential ChIP-seq an
 
 
 * [ATAC-seq normalization method can significantly affect differential accessibility analysis and interpretation](https://epigeneticsandchromatin.biomedcentral.com/articles/10.1186/s13072-020-00342-y)
+* [Comparison of differential accessibility analysis strategies for ATAC-seq data](https://www.nature.com/articles/s41598-020-66998-4) https://github.com/Zhang-lab/BeCorrect to correct batch effect from the bedgraph files.
 
 1. [MultiGPS](http://mahonylab.org/software/multigps/)  
 
@@ -220,16 +226,17 @@ The size of the region used for motif finding is important.  If analyzing ChIP-S
 I just found [PARE](http://spundhir.github.io/PARE/). PARE is a computational method to Predict Active Regulatory Elements, specifically enhancers and promoters. H3K27ac and H3K4me can be used to define active enhancers.
 
 2. [MEME suite](http://meme.ebi.edu.au/meme/index.html). It is probably the most popular motif finding tool in the papers.  [protocol:Motif-based analysis of large nucleotide data sets using MEME-ChIP](http://www.nature.com/nprot/journal/v9/n6/full/nprot.2014.083.html)  
-3. [JASPAR database](http://jaspar.binf.ku.dk/  )
-3. [pScan-ChIP](http://159.149.160.51/pscan_chip_dev/)  
-4. [MotifMap](http://motifmap.ics.uci.edu/#MotifSearch)  
-5. [RAST](http://rsat01.biologie.ens.fr/rsa-tools/index.html) Regulatory Sequence Analysis Tools.  
-6. [ENCODE TF motif database](http://compbio.mit.edu/encode-motifs/)  
-7. [oPOSSUM](http://opossum.cisreg.ca/oPOSSUM3/) is a web-based system for the detection of over-represented conserved transcription factor binding sites and binding site combinations in sets of genes or sequences.  
-8.  my post [how to get a genome-wide motif bed file](http://crazyhottommy.blogspot.com/2014/02/how-to-get-genome-wide-motif-bed-file.html) 
-9.  Many other tools [here](http://omictools.com/motif-discovery-c84-p1.html)
-10. [A review of ensemble methods for de novo motif discovery in ChIP-Seq data](http://bib.oxfordjournals.org/content/early/2015/04/17/bib.bbv022.abstract)  
-11. [melina2](http://melina2.hgc.jp/public/index.html). If you only have one sequence and want to know what TFs might bind
+3. [MEME R package](https://snystrom.github.io/memes-manual/)
+4. [JASPAR database](http://jaspar.binf.ku.dk/  )
+5. [pScan-ChIP](http://159.149.160.51/pscan_chip_dev/)  
+6. [MotifMap](http://motifmap.ics.uci.edu/#MotifSearch)  
+7. [RAST](http://rsat01.biologie.ens.fr/rsa-tools/index.html) Regulatory Sequence Analysis Tools.  
+8. [ENCODE TF motif database](http://compbio.mit.edu/encode-motifs/)  
+9. [oPOSSUM](http://opossum.cisreg.ca/oPOSSUM3/) is a web-based system for the detection of over-represented conserved transcription factor binding sites and binding site combinations in sets of genes or sequences.  
+10.  my post [how to get a genome-wide motif bed file](http://crazyhottommy.blogspot.com/2014/02/how-to-get-genome-wide-motif-bed-file.html) 
+11.  Many other tools [here](http://omictools.com/motif-discovery-c84-p1.html)
+12. [A review of ensemble methods for de novo motif discovery in ChIP-Seq data](http://bib.oxfordjournals.org/content/early/2015/04/17/bib.bbv022.abstract)  
+13. [melina2](http://melina2.hgc.jp/public/index.html). If you only have one sequence and want to know what TFs might bind
     there, this is a very useful tool.
 12. [STEME](https://pypi.python.org/pypi/STEME/). A python library for motif analysis. STEME started life as an approximation to the Expectation-Maximisation algorithm for the type of model used in motif finders such as MEME. **STEME’s EM approximation runs an order of magnitude more quickly than the MEME implementation for typical parameter settings**. STEME has now developed into a fully-fledged motif finder in its own right.  
 13. [CENTIPEDE: Transcription factor footprinting and binding site prediction](http://centipede.uchicago.edu/). [Tutorial](https://github.com/slowkow/CENTIPEDE.tutorial)  
@@ -244,6 +251,9 @@ I just found [PARE](http://spundhir.github.io/PARE/). PARE is a computational me
 22. [moca](https://github.com/saketkc/moca): Tool for motif conservation analysis.
 23. [gimmemotifs](https://github.com/simonvh/gimmemotifs) Suite of motif tools, including a motif prediction pipeline for ChIP-seq experiments. looks very useful, will take a look!
 24. [YAMDA](https://github.com/daquang/YAMDA): thousandfold speedup of EM-based motif discovery using deep learning libraries and GPU
+25. [motif clustering](https://www.vierstra.org/resources/motif_clustering)
+26. [RSAT matrix-clustering: dynamic exploration and redundancy reduction of transcription factor binding motif collections](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5737723/)
+
 
 ### Super-enhancer identification   
 
@@ -286,7 +296,11 @@ Example of a super enhancer plot:
 [pyBigwig](https://github.com/deeptools/pyBigWig)
 [Hosting bigWig for UCSC visualization](http://crazyhottommy.blogspot.com/2014/02/hosting-bigwig-by-dropbox-for-ucsc.html)  
 [My first play with GRO-seq data, from sam to bedgraph for visualization](http://crazyhottommy.blogspot.com/2013/10/my-first-play-with-gro-seq-data-from.html)  
-[convert bam file to bigwig file and visualize in UCSC genome browser in a Box (GBiB)](http://crazyhottommy.blogspot.com/2014/10/convert-bam-file-to-bigwig-file-and.html)  
+[convert bam file to bigwig file and visualize in UCSC genome browser in a Box (GBiB)](http://crazyhottommy.blogspot.com/2014/10/convert-bam-file-to-bigwig-file-and.html). 
+[megadept](https://github.com/ChristopherWilks/megadepth) is pretty fast, can access bigWig files from the web, works on macOS, Linux & Windows, plus is also available via 
+@Bioconductor http://www.bioconductor.org/packages/release/bioc/html/megadepth.html which makes easy to use it in #rstats. For example, for quantifying expression of custom regions from recount3 data
+
+[Bigtools: a high-performance BigWig and BigBed library in rust](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btae350/7688332?login=false)
 
 
 
@@ -356,6 +370,7 @@ A paper from Genome Research [Ubiquitous heterogeneity and asymmetry of the chro
 
 ### Enhancer target prediction 
 
+* [DoRothEA: collection of human and mouse regulons](https://github.com/saezlab/dorothea) DoRothEA is a gene regulatory network containing signed transcription factor (TF) - target gene interactions. DoRothEA regulons, the collection of a TF and its transcriptional targets, were curated and collected from different types of evidence for both human and mouse. A confidence level was assigned to each TF-target interaction based on the number of supporting evidence.
 * [Assessing Computational Methods for Transcription Factor Target Gene Identification Based on ChIP-seq Data](http://www.ploscompbiol.org/article/info:doi/10.1371/journal.pcbi.1003342#pcbi.1003342.s019) 
 * [Protein binding and methylation on looping chromatin accurately predict distal regulatory interactions](http://biorxiv.org/content/early/2015/07/09/022293)
 * [i-cisTarget](http://gbiomed.kuleuven.be/apps/lcb/i-cisTarget/)
@@ -426,6 +441,8 @@ A paper from Genome Research [Ubiquitous heterogeneity and asymmetry of the chro
 * [High-Throughput ChIPmentation: freely scalable, single day ChIPseq data generation from very low cell-numbers](https://www.biorxiv.org/content/early/2018/09/27/426957)
 
 * [CUT&Tag for efficient epigenomic profiling of small samples and single cells](https://www.biorxiv.org/content/10.1101/568915v1)
+
+* [CUT&Tag Data Processing and Analysis Tutorial](https://yezhengstat.github.io/CUTTag_tutorial/) protocols.io link https://www.protocols.io/view/cut-amp-tag-data-processing-and-analysis-tutorial-bjk2kkye
 
 * [Simultaneous quantification of protein-DNA contacts and transcriptomes in single cells](https://www.biorxiv.org/content/10.1101/529388v1) scDamID&T.
 
